@@ -11,7 +11,7 @@ function App() {
         <AppTitle title={"This is App component"} />
         <AppTitle title={"Hello"} />
         <Rating value = {3} />
-        <Accordion title={"Menu"} />
+        <Accordion titleValue={"Menu"} />
         <Rating value = {4} />
       </div>
   );
