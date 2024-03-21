@@ -8,19 +8,20 @@ function App() {
   console.log("App rendering")
   return (
       <div>
-        <AppTitle />
+        <AppTitle title={"This is App component"} />
+        <AppTitle title={"Hello"} />
         <Rating value = {3} />
-        <Accordion />
+        <Accordion title={"Menu"} />
         <Rating value = {4} />
       </div>
   );
 }
 
 
-function AppTitle() {
+function AppTitle(props: any) {
   console.log("AppTitle rendering")
   return (
-      <>This is App component</>
+      <h2>{props.title}</h2>
   );
 }
 

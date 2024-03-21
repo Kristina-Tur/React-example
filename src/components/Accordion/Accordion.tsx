@@ -2,11 +2,11 @@ import React from 'react';
 import {AccordionTitle} from './AccordionTitle';
 import {AccordionBody} from './AccordionBody';
 
-export function Accordion() {
+export function Accordion(props: any) {
     console.log('Accordion rendering')
     return (
         <div>
-            <AccordionTitle/>
+            <AccordionTitle title={props.title}/>
             <AccordionBody/>
         </div>
     );
