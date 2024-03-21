@@ -11,14 +11,17 @@ function App() {
         <AppTitle title={"This is App component"} />
         <AppTitle title={"Hello"} />
         <Rating value = {3} />
-        <Accordion titleValue={"Menu"} />
+        <Accordion titleValue={"Menu"} collapsed = {false}/>
+        <Accordion titleValue={"Menu1"} collapsed = {true}/>
         <Rating value = {4} />
       </div>
   );
 }
 
-
-function AppTitle(props: any) {
+type AppTitlePropsType = {
+    title: string
+}
+function AppTitle(props: AppTitlePropsType) {
   console.log("AppTitle rendering")
   return (
       <h2>{props.title}</h2>
