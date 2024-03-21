@@ -6,6 +6,7 @@ import {Rating} from './components/Rating/Rating';
 
 function App() {
   console.log("App rendering")
+
   return (
       <div>
         <AppTitle />
