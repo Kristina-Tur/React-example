@@ -5,14 +5,8 @@ type StarPropsType = {
 }
 export function UnControlledStar(props: StarPropsType) {
     console.log('Star rendering');
-    if(props.selected){
         return (
-            <span>star </span>
+            props.selected ? <span><b>star </b></span> : <span>star </span>
         )
-    } else {
-        return (
-            <span><b>star</b> </span>
-        )
-    }
 
 }

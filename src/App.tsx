@@ -21,7 +21,6 @@ function App() {
             <OnOff/>
             <OnOff/>
             <UnControlledAccordion titleValue={'Menu3'}/>
-            <UnControlledAccordion titleValue={'Menu3'}/>
             <UnControlledRating/>
         </div>
     );
