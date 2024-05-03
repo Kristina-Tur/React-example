@@ -1,26 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-type OnOffPropsType = {
+/*type OnOffPropsType = {
     isSwitch: boolean
-}
-export const OnOff = (props: OnOffPropsType) => {
-    if (props.isSwitch) {
-        return (
-            <div>
-                <button style={{backgroundColor: 'green'}}>On</button>
-                <button>Off</button>
-                <div style={{backgroundColor: 'green', width: '20px',  height: '20px',
-                    borderRadius: '50%'}}></div>
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <button>On</button>
-                <button style={{backgroundColor: 'red'}}>Off</button>
-                <div style={{backgroundColor: 'red', width: '20px',  height: '20px',
-                    borderRadius: '50%'}}></div>
-            </div>
-        )
+}*/
+export const OnOff = (/*props: OnOffPropsType*/) => {
+    const [on, setOn] = useState(false)
+    const OnButton = {
+        backgroundColor: on ? 'green' : 'white',
+        marginRight: '10px'
     }
+    const OffButton = {
+        backgroundColor: on ? 'white' : 'red',
+        marginRight: '10px'
+    }
+    const OnOffCircle = {
+        display: 'inline-block',
+        backgroundColor: on ? 'green' : 'red',
+        width: '15px',
+        height: '15px',
+        borderRadius: '50%'
+    }
+    return (
+        <div>
+            <button style={OnButton} onClick={() => {setOn(true)}}>On</button>
+            <button style={OffButton}  onClick={() => {setOn(false)}}>Off</button>
+            <div style={OnOffCircle}></div>
+        </div>
+    )
 }
