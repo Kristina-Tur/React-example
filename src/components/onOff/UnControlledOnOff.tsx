@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 type OnOffPropsType = {
     on: boolean
-    onClick: (on: boolean) => void
+    onChange: (on: boolean) => void
 }
 export const UnControlledOnOff = () => {
 const [on, setOn] = useState(false)
@@ -21,10 +21,18 @@ const [on, setOn] = useState(false)
         height: '15px',
         borderRadius: '50%'
     }
+
+    const onClickHandlerOn = () => {
+        setOn(true)
+    }
+    const onClickHandlerOff = () => {
+        setOn(false)
+    }
+
     return (
         <div>
-            <button style={OnButton} onClick={() => {setOn(true)}}>On</button>
-            <button style={OffButton}  onClick={() => {setOn(false)}}>Off</button>
+            <button style={OnButton} onClick={onClickHandlerOn}>On</button>
+            <button style={OffButton}  onClick={onClickHandlerOff}>Off</button>
             <div style={OnOffCircle}></div>
         </div>
     )

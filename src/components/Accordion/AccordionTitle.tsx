@@ -8,6 +8,6 @@ type AccordionTitlePropsType = {
 export function AccordionTitle(props: AccordionTitlePropsType) {
     console.log('AccordionTitle rendering')
     return (
-        <h2 onClick={() => {props.onClick(!props.collapsed)}}>{props.title}</h2>
+        <h2 onClick={() => {props.onClick(props.collapsed)}}>{props.title}</h2>
     );
 }
