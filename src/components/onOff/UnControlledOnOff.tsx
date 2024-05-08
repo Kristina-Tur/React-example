@@ -4,8 +4,8 @@ type OnOffPropsType = {
     on: boolean
     onClick: (on: boolean) => void
 }
-export const OnOff = ({on, onClick} :OnOffPropsType) => {
-
+export const UnControlledOnOff = () => {
+const [on, setOn] = useState(false)
     const OnButton = {
         backgroundColor: on ? 'green' : 'white',
         marginRight: '10px'
@@ -23,8 +23,8 @@ export const OnOff = ({on, onClick} :OnOffPropsType) => {
     }
     return (
         <div>
-            <button style={OnButton} onClick={() => {onClick(true)}}>On</button>
-            <button style={OffButton}  onClick={() => {onClick(false)}}>Off</button>
+            <button style={OnButton} onClick={() => {setOn(true)}}>On</button>
+            <button style={OffButton}  onClick={() => {setOn(false)}}>Off</button>
             <div style={OnOffCircle}></div>
         </div>
     )
