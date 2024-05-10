@@ -1,6 +1,6 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
 
-export const config: StorybookConfig = {
+const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "@storybook/preset-create-react-app",
@@ -9,6 +9,7 @@ export const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    '@storybook/addon-actions',
   ],
   framework: {
     name: "@storybook/react-webpack5",
@@ -20,7 +21,4 @@ export const config: StorybookConfig = {
   staticDirs: ["..\\public"],
 };
 
-/*export default ;*/
-export default {
-  addons: ['@storybook/addon-actions'],
-};
+export default config;
