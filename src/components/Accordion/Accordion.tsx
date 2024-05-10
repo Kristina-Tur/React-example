@@ -5,15 +5,15 @@ import {AccordionBody} from './AccordionBody';
 type AccordionPropsType = {
     titleValue: string,
     collapsed: boolean
-    onClick: (collapsed: boolean) => void
+    onClick: () => void
 }
 
-export function Accordion(props: AccordionPropsType) {
+export function Accordion({titleValue, collapsed, onClick}: AccordionPropsType) {
     console.log('Accordion rendering')
         return (
             <div>
-                <AccordionTitle title={props.titleValue} onClick={props.onClick} collapsed={props.collapsed}/>
-                {!props.collapsed && <AccordionBody/>}
+                <AccordionTitle title={titleValue} onClick={onClick} collapsed={collapsed}/>
+                {!collapsed && <AccordionBody/>}
             </div>
         );
 } 

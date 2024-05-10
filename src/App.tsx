@@ -20,7 +20,7 @@ function App() {
             <AppTitle title={'Hello'}/>
 
             <Rating value={ratingValue} onClick = {setRatingValue}/>
-            <Accordion titleValue={'Menu'} collapsed={!collapsed} onClick={setCollapsed}/>
+            <Accordion titleValue={'Menu'} collapsed={!collapsed} onClick={() => setCollapsed(collapsed)}/>
             <OnOff on={on} onClick={setOn}/>
 
             <UnControlledAccordion titleValue={'Menu3'}/>
