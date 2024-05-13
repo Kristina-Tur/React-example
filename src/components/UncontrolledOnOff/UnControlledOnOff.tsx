@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 
 type OnOffPropsType = {
-    on: boolean
-    onChange: (on: boolean) => void
+    default?: boolean
 }
-export const UnControlledOnOff = () => {
-const [on, setOn] = useState(false)
+export const UnControlledOnOff = (props: OnOffPropsType) => {
+const [on, setOn] = useState(props.default ? props.default : false)
     const OnButton = {
         backgroundColor: on ? 'green' : 'white',
         marginRight: '10px'

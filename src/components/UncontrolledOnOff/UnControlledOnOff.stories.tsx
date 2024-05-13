@@ -9,4 +9,7 @@ export default {
 
 
 
+export const OnMode = () => <UnControlledOnOff default={true}/>
+export const OffMode = () => <UnControlledOnOff default={false}/>
 export const ModeChanging = () => <UnControlledOnOff/>
+export const DefaultInputValue = () => <input defaultValue={'yo'} />
