@@ -1,12 +1,17 @@
 import React from 'react';
+import {ItemsPropsType} from './Accordion';
 
-export function AccordionBody() {
+type ItemsBodyPropsType = {
+    items: ItemsPropsType[]
+    onItemClick: (value: number) => void
+}
+
+export function AccordionBody(props: ItemsBodyPropsType) {
     console.log('AccordionBody rendering')
+
     return (
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            {props.items.map(item => <li key={item.value} onClick={() => props.onItemClick(item.value)}>{item.title}</li>)}
         </ul>
     );
 }

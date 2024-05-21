@@ -29,13 +29,22 @@ export const CollapsedAccordion = () => {
 }
 
 export const OpenedAccordion = () => {
-    return <Accordion titleValue={'Opened Accordion'} collapsed={false} onClick={onClickHandler}/>
+    return <Accordion
+        titleValue={'Opened Accordion'}
+        collapsed={false}
+        onClick={onClickHandler}
+        items={[{value: 1, title: 'Ann'}, {value: 2, title: 'Bob'}, {value: 3, title: 'Kris'}]}
+        onItemClick={onClickHandler}
+    />
 }
 
 export const AccordionDemo = () => {
     const [collapsed, setCollapsed] = useState(false)
-    return <Accordion titleValue={'AccordionDemo'} collapsed={collapsed} onClick={() => {
-        setCollapsed(!collapsed)
-    }}
+    return <Accordion
+        titleValue={'AccordionDemo'}
+        collapsed={collapsed}
+        onClick={() => {setCollapsed(!collapsed)}}
+        items={[{value: 1, title: 'Ann'}, {value: 2, title: 'Bob'}, {value: 3, title: 'Kris'}]}
+        onItemClick={onClickHandler}
     />
 }
