@@ -2,19 +2,31 @@ import React from 'react';
 
 type SelectPropsType = {
     value: any
-    onChange: (value: any) => void
+    onClick: () => void
+    handleOptionClick: (item: string) => void
     items: ItemsPropsType[]
+    isOpen: boolean
 }
 export type ItemsPropsType = {
     value: any
     title: string
 }
 
-export const Select = ({value, onChange, items}:SelectPropsType) => {
+export const Select = ({value, onClick, items, isOpen, handleOptionClick}: SelectPropsType) => {
     return (
         <div>
-            <div>{}</div>
-            {items.map(item => item.title)}
+            <div onClick={onClick}>Select an option
+            </div>
+            {isOpen && (
+                <div>
+                    {items.map((item) => (
+                        <div onClick={() => handleOptionClick(item.value)} key={item.value}>
+                            {item.title}
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
-    );
+)
+    ;
 };
