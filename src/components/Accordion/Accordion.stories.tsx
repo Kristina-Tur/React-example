@@ -23,9 +23,11 @@ export default {
 };
 
 const onClickHandler = action('onClick')
+const onItemClick = action('onItemClick')
 
 export const CollapsedAccordion = () => {
-    return <Accordion titleValue={'Collapsed Accordion'} collapsed={true} onClick={onClickHandler}/>
+    return <Accordion titleValue={'Collapsed Accordion'} collapsed={true} onClick={onClickHandler} items={[]}
+    onItemClick={onItemClick}/>
 }
 
 export const OpenedAccordion = () => {

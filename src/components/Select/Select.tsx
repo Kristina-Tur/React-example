@@ -1,21 +1,20 @@
 import React from 'react';
 
 type SelectPropsType = {
-    titleValue: string
-    onClick: () => void
-    items?: ItemsPropsType[] | undefined
-    onItemClick?: () => void
+    value: any
+    onChange: (value: any) => void
+    items: ItemsPropsType[]
 }
 export type ItemsPropsType = {
-    value: number
+    value: any
     title: string
 }
 
-export const Select = () => {
+export const Select = ({value, onChange, items}:SelectPropsType) => {
     return (
         <div>
             <div>{}</div>
-            {}
+            {items.map(item => item.title)}
         </div>
     );
 };

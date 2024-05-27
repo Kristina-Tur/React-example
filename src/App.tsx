@@ -6,10 +6,12 @@ import {OnOff} from './components/onOff/OnOff';
 import {UnControlledAccordion} from './components/UnControlledAccordion/UnControlledAccordion';
 import {UnControlledRating} from './components/UnControlledRating/UnControlledRating';
 import {UnControlledOnOff} from './components/UncontrolledOnOff/UnControlledOnOff';
+import {Select} from "./components/Select/Select";
 
 
 function App() {
     console.log('App rendering')
+    const items = [{value: 1, title: 'Ann'}, {value: 2, title: 'Bob'}, {value: 3, title: 'Kris'}]
 
     const [ratingValue, setRatingValue] = useState<RatingType>(0)
     const [collapsed, setCollapsed] = useState(false)
@@ -20,12 +22,16 @@ function App() {
             <AppTitle title={'Hello'}/>
 
             <Rating value={ratingValue} onClick = {setRatingValue}/>
-            <Accordion titleValue={'Menu'} collapsed={!collapsed} onClick={() => setCollapsed(collapsed)}/>
+            <Accordion titleValue={'Menu'} items={items} collapsed={collapsed}
+                       onClick={() => setCollapsed(!collapsed)}
+            onItemClick={() => alert(1)}/>
             <OnOff on={on} onClick={setOn}/>
 
             <UnControlledAccordion titleValue={'Menu3'}/>
             <UnControlledRating/>
             <UnControlledOnOff/>
+
+
         </div>
     );
 }

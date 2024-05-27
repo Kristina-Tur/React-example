@@ -1,5 +1,3 @@
-import {action} from '@storybook/addon-actions';
-
 import React, {ChangeEvent, useRef, useState} from 'react';
 
 export default {

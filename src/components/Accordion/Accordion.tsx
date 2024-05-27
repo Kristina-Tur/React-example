@@ -6,8 +6,8 @@ type AccordionPropsType = {
     titleValue: string,
     collapsed: boolean
     onClick: () => void
-    items?: ItemsPropsType[] | undefined
-    onItemClick?: () => void
+    items: ItemsPropsType[]
+    onItemClick: () => void
 }
 export type ItemsPropsType = {
     value: number
@@ -16,13 +16,11 @@ export type ItemsPropsType = {
 
 export function Accordion({titleValue, collapsed, onClick, items, onItemClick}: AccordionPropsType) {
     console.log('Accordion rendering')
-    const renderAccordionBody = !collapsed && items && onItemClick
-        ? <AccordionBody items={items} onItemClick={onItemClick}/>
-        : []
         return (
             <div>
-                <AccordionTitle title={titleValue} onClick={onClick} collapsed={collapsed}/>
-                {renderAccordionBody }
+                <AccordionTitle title={titleValue} onClick={onClick}/>
+                {!collapsed && <AccordionBody items={items} onItemClick={onItemClick}/>
+            }
             </div>
         );
 } 
