@@ -36,7 +36,7 @@ export const OpenedAccordion = () => {
         collapsed={false}
         onClick={onClickHandler}
         items={[{value: 1, title: 'Ann'}, {value: 2, title: 'Bob'}, {value: 3, title: 'Kris'}]}
-        onItemClick={onClickHandler}
+        onItemClick={onItemClick}
     />
 }
 
@@ -47,6 +47,6 @@ export const AccordionDemo = () => {
         collapsed={collapsed}
         onClick={() => {setCollapsed(!collapsed)}}
         items={[{value: 1, title: 'Ann'}, {value: 2, title: 'Bob'}, {value: 3, title: 'Kris'}]}
-        onItemClick={onClickHandler}
+        onItemClick={onItemClick}
     />
 }
