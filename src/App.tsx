@@ -42,8 +42,8 @@ function App() {
             <UnControlledAccordion titleValue={'Menu3'}/>
             <UnControlledRating/>
             <UnControlledOnOff/>
-            <Select handleOptionClick={handleOptionClick} isOpen={isOpen} value={selectedOption} onClick={onClickHandler} items={items}/>
-
+           {/* <Select handleOptionClick={handleOptionClick} isOpen={isOpen} value={selectedOption} onClick={onClickHandler} items={items}/>*/}
+<Select/>
         </div>
     );
 }
@@ -58,6 +58,7 @@ function AppTitle(props: AppTitlePropsType) {
         <h2>{props.title}</h2>
     );
 }
+
 
 
 export default App;
