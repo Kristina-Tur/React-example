@@ -9,23 +9,32 @@ import {UnControlledOnOff} from './components/UncontrolledOnOff/UnControlledOnOf
 import {Select} from "./components/Select/Select";
 import {string} from "prop-types";
 
+export type ItemsType = {
+    value: number
+    title: string
+}
 
 function App() {
     console.log('App rendering')
-    const items = [{value: 1, title: 'Ann'}, {value: 2, title: 'Bob'}, {value: 3, title: 'Kris'}]
+    const items = [
+        {value: 1, title: 'Ann'},
+        {value: 2, title: 'Bob'},
+        {value: 3, title: 'Kris'}
+    ]
 
     const [ratingValue, setRatingValue] = useState<RatingType>(0)
     const [collapsed, setCollapsed] = useState(false)
     const [on, setOn] = useState(false)
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    const [selectedOption, setSelectedOption] = useState<null | string>(null);
-    const onClickHandler = () => {
-        setIsOpen(!isOpen)
-    }
+    const [selectedOption, setSelectedOption] = useState<null | ItemsType>(null);
 
-    const handleOptionClick = (item: string) => {
-        setSelectedOption(item);
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleOptionClick = (option: ItemsType) => {
+        setSelectedOption(option);
         setIsOpen(false);
     };
     return (
@@ -42,8 +51,13 @@ function App() {
             <UnControlledAccordion titleValue={'Menu3'}/>
             <UnControlledRating/>
             <UnControlledOnOff/>
-           {/* <Select handleOptionClick={handleOptionClick} isOpen={isOpen} value={selectedOption} onClick={onClickHandler} items={items}/>*/}
-<Select/>
+            <Select
+                items={items}
+                handleToggle={handleToggle}
+                handleOptionClick={handleOptionClick}
+                selectedOption={selectedOption}
+                isOpen={isOpen}
+            />
         </div>
     );
 }
@@ -58,7 +72,6 @@ function AppTitle(props: AppTitlePropsType) {
         <h2>{props.title}</h2>
     );
 }
-
 
 
 export default App;

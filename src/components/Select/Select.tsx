@@ -33,23 +33,44 @@ export const Select = ({value, onClick, items, isOpen, handleOptionClick}: Selec
     ;
 };*/
 
-import React, { useState } from 'react';
+import React from 'react';
+import {ItemsType} from "../../App";
 
-type ItemsType = {
-    value: number
-    title: string
+type SelectPropsType = {
+    items: ItemsType[]
+    handleToggle: () => void
+    selectedOption: null | ItemsType
+    handleOptionClick: (option: ItemsType) => void
+    isOpen: boolean
 }
 
-export const Select = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<null | ItemsType>(null);
+export const Select = ({
+                           items,
+                           handleOptionClick,
+                           isOpen,
+                           handleToggle,
+                           selectedOption
+                       }: SelectPropsType) => {
 
-    const items: ItemsType[] = [
-        {value: 1, title: 'Ann'},
-        {value: 2, title: 'Bob'},
-        {value: 3, title: 'Kris'}
-    ]
 
+
+
+    return (
+        <div>
+            <SelectTitle selectedOption={selectedOption} handleToggle={handleToggle}/>
+            {isOpen && (
+                <SelectBody items={items} handleOptionClick={handleOptionClick}/>
+            )}
+        </div>
+    );
+};
+
+type SelectTitleProps = {
+    handleToggle: () => void
+    selectedOption: null | ItemsType
+}
+
+export const SelectTitle = ({handleToggle, selectedOption}: SelectTitleProps) => {
     const itemsStylesTitle = {
         maxWidth: '160px',
         backgroundColor: 'grey',
@@ -58,6 +79,17 @@ export const Select = () => {
         cursor: 'pointer'
     }
 
+    return <div style={itemsStylesTitle} onClick={handleToggle}>
+        {selectedOption ? selectedOption.title + ' >' : 'Select an option >'}
+    </div>
+}
+
+type SelectBodyProps = {
+    items: ItemsType[]
+    handleOptionClick: (option: ItemsType) => void
+}
+
+export const SelectBody = ({items,handleOptionClick}: SelectBodyProps) => {
     const itemsStyle = {
         maxWidth: '160px',
         border: '1px solid black',
@@ -65,29 +97,12 @@ export const Select = () => {
         cursor: 'pointer'
     }
 
-    const handleToggle = () => {
-        setIsOpen(!isOpen);
-    };
-
-    const handleOptionClick = (option: ItemsType) => {
-        setSelectedOption(option);
-        setIsOpen(false);
-    };
-
-    return (
-        <div>
-            <div style={itemsStylesTitle} onClick={handleToggle}>
-                {selectedOption ? selectedOption.title + ' >' : 'Select an option >'}
+    return <div>
+        {items.map((item) => (
+            <div style={itemsStyle} onClick={() => handleOptionClick(item)} key={item.value}>
+                {item.title}
             </div>
-            {isOpen && (
-                <div>
-                    {items.map((item) => (
-                        <div style={itemsStyle} onClick={() => handleOptionClick(item)} key={item.value}>
-                            {item.title}
-                        </div>
-                    ))}
-                </div>
-            )}
-        </div>
-    );
-};
+        ))}
+    </div>
+}
+
