@@ -8,6 +8,7 @@ import {UnControlledRating} from './components/UnControlledRating/UnControlledRa
 import {UnControlledOnOff} from './components/UncontrolledOnOff/UnControlledOnOff';
 import {Select} from "./components/Select/Select";
 import {string} from "prop-types";
+import {Select2} from "./components/Select2/Select2";
 
 export type ItemsType = {
     value: number
@@ -58,6 +59,7 @@ function App() {
                 selectedOption={selectedOption}
                 isOpen={isOpen}
             />
+            <Select2 value={2} onClick={() => {}} items={items}/>
         </div>
     );
 }

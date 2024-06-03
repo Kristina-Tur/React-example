@@ -35,6 +35,7 @@ export const Select = ({value, onClick, items, isOpen, handleOptionClick}: Selec
 
 import React from 'react';
 import {ItemsType} from "../../App";
+import {Box, FormControl, InputLabel, NativeSelect} from "@mui/material";
 
 type SelectPropsType = {
     items: ItemsType[]
@@ -53,15 +54,27 @@ export const Select = ({
                        }: SelectPropsType) => {
 
 
-
-
     return (
-        <div>
+        <Box sx={{minWidth: 120}}>
+            <FormControl>
+                <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                    Name
+                </InputLabel>
+                <NativeSelect>
+                    {items.map((item) => (
+                        <option key={item.value}>
+                            {item.title}
+                        </option>
+                    ))}
+                </NativeSelect>
+            </FormControl>
+        </Box>
+        /*<div>
             <SelectTitle selectedOption={selectedOption} handleToggle={handleToggle}/>
             {isOpen && (
                 <SelectBody items={items} handleOptionClick={handleOptionClick}/>
             )}
-        </div>
+        </div>*/
     );
 };
 
@@ -89,7 +102,7 @@ type SelectBodyProps = {
     handleOptionClick: (option: ItemsType) => void
 }
 
-export const SelectBody = ({items,handleOptionClick}: SelectBodyProps) => {
+export const SelectBody = ({items, handleOptionClick}: SelectBodyProps) => {
     const itemsStyle = {
         maxWidth: '160px',
         border: '1px solid black',
