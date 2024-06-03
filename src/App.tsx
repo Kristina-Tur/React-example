@@ -40,7 +40,7 @@ function App() {
     };
     return (
         <div>
-            <AppTitle title={'This is App component'}/>
+            {/*<AppTitle title={'This is App component'}/>
             <AppTitle title={'Hello'}/>
 
             <Rating value={ratingValue} onClick={setRatingValue}/>
@@ -59,7 +59,8 @@ function App() {
                 selectedOption={selectedOption}
                 isOpen={isOpen}
             />
-            <Select2 value={2} onClick={() => {}} items={items}/>
+            <Select2 value={2} onClick={() => {}} items={items}/>*/}
+            <UnControlledAccordion titleValue={'Menu3'}/>
         </div>
     );
 }
