@@ -55,11 +55,11 @@ export const Users = (props: {users: Array<string>}) => {
 const UsersMemo = memo(Users)
 
 export const helpToReactMemo = () => {
-    console.log('Render help')
+    console.log('Render helpToReactMemo')
     const [counter, setCounter] = useState(0)
     const [users, setUsers] = useState(['Kris', 'Vadim', 'Jo', 'Anna'])
 
-    const newArray = useMemo(() => users.filter(u => u.indexOf('a') > -1), [])
+    const newArray = useMemo(() => users.filter(u => u.indexOf('a') > -1), [users])
 
     const addUser = () => {
         setUsers([...users, 'Sveta'])
