@@ -17,7 +17,7 @@ export const Users = (props: {users: Array<string>}) => {
 const UsersMemo = memo(Users)
 
 export const helpToReactMemo = () => {
-    console.log('Render counter')
+    console.log('Render helpToReactMemo')
     const [counter, setCounter] = useState(0)
     const [users, setUsers] = useState(['Kris', 'Kris', 'Kris', 'Kris'])
 
