@@ -1,4 +1,4 @@
-import React, {memo, useMemo, useState} from 'react';
+import React, {memo, useCallback, useMemo, useState} from 'react';
 
 export default {
     component: 'useMemo',
@@ -12,9 +12,9 @@ export const useMemoExample = () => {
     let resultB = 1
 
     resultA = useMemo(() => {
-        for(let i = 1; i <= a; i++){
+        for (let i = 1; i <= a; i++) {
             let fake = 0
-            while(fake < 1000000){
+            while (fake < 1000000) {
                 fake++
                 const fakeValue = Math.random()
             }
@@ -24,7 +24,7 @@ export const useMemoExample = () => {
     }, [a])
 
 
-    for(let i = 1; i <= b; i++){
+    for (let i = 1; i <= b; i++) {
         resultB = resultB * i
     }
 
@@ -43,7 +43,7 @@ export const useMemoExample = () => {
     )
 }
 
-export const Users = (props: {users: Array<string>}) => {
+export const Users = (props: { users: Array<string> }) => {
     console.log('Render Users')
     return (
         <div>
@@ -73,3 +73,42 @@ export const helpToReactMemo = () => {
         </>
     )
 }
+
+export const useCallbackStories = () => {
+    console.log('Render helpToReactMemo')
+    const [counter, setCounter] = useState(0)
+    const [books, setBooks] = useState(['saa', 'ga', 'Jo', 'y'])
+
+    /* const addBooks = () => {
+         setBooks([...books, 'Sveta'])
+     }*/
+    const memoizedBooks = useMemo(() => {
+        return () => {
+            setBooks([...books, 'Sveta'])
+        }
+    }, [books]);
+
+    const memoizedBooksCallback = useCallback(() => {
+        setBooks([...books, 'Sveta'])
+    }, [books])
+
+    return (
+        <>
+            <button onClick={() => setCounter(counter + 1)}>+</button>
+            {counter}
+            <Book addBooks={memoizedBooksCallback}/>
+        </>
+    )
+}
+
+const Books = (props: { addBooks: () => void }) => {
+    console.log('Render Books')
+    return (
+
+        <div>
+            <button onClick={() => props.addBooks()}>add user</button>
+        </div>
+    )
+}
+
+const Book = React.memo(Books)
