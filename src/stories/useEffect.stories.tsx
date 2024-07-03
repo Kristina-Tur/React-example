@@ -65,39 +65,27 @@ export const UseEffectSetTimeOutStories = () => {
 };
 
 export const Clock = () => {
-        const date = new Date()
-        let hours = date.getHours()
-        let minutes = date.getMinutes()
-        let seconds = date.getSeconds()
-
-        const [secondsState, setSecondsState] = useState(seconds);
-        const [minutesState, setMinutesState] = useState(minutes);
-        const [hoursState, setHoursState] = useState(hours);
+        const [state, setState] = useState(new Date());
 
         useEffect(() => {
-            setInterval(() => {
-                seconds++
-                if (seconds === 60) {
-                    minutes++
-                    seconds = 0
-                }
-                if (minutes === 60) {
-                    hours++
-                    minutes = 0
-                }
-                if (hours === 24) {
-                    hours = 0
-                }
-                setSecondsState(seconds)
-                setMinutesState(minutes)
-                setHoursState(hours)
+            const idInterval = setInterval(() => {
+                console.log('Tick')
+                setState(new Date())
             }, 1000)
+            return () => clearInterval(idInterval)
         }, []);
 
+        const get2digitsString = (num: number) => {
+            return num < 10 ? '0' + num : num
+        }
+
+        const hours = get2digitsString(state.getHours())
+        const minutes = get2digitsString(state.getMinutes())
+        const seconds = get2digitsString(state.getSeconds())
 
         return (
             <div>
-                {hoursState}:{minutesState}:{secondsState}
+                {hours}:{minutes}:{seconds}
             </div>
         );
     }
