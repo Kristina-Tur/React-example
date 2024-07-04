@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useEffect, useMemo, useRef, useState} from "react";
 
 export default {
-    title: 'useState Demo'
+    title: 'useEffect Demo'
 }
 
 
@@ -60,6 +60,53 @@ export const UseEffectSetTimeOutStories = () => {
             <button onClick={() => setFake(fake + 1)}>+ fake </button>*/}
             {count}
             {/*{fake}*/}
+        </div>
+    );
+};
+
+export const ResetUseEffectStories = () => {
+    const [count, setCount] = useState(0);
+
+    console.log('ResetUseEffectStories ' + count);
+
+    useEffect(() => {
+        console.log('useEffect render');
+        return () => {
+            console.log('Reset ' + count)
+        }
+    }, [count]);
+
+
+    return (
+        <div>
+            <button onClick={() => setCount(count + 1)}>+</button>
+            {count}
+        </div>
+    );
+};
+
+export const KeyTrackUseEffectStories = () => {
+    const [text, setText] = useState('');
+
+    console.log('Component' + text);
+
+    useEffect(() => {
+        console.log('useEffect render');
+        const handler = (e: KeyboardEvent) => {
+            setText(state => state + e.key)
+            console.log(e.key)
+        }
+        window.addEventListener('keypress', handler)
+        return () => {
+            console.log('Reset ' + text)
+            window.removeEventListener('keypress', handler)
+        }
+    }, []);
+
+
+    return (
+        <div>
+            Text: {text}
         </div>
     );
 };
